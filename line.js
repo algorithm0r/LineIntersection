@@ -36,11 +36,11 @@ class Line {
     collide(other) {
         if (this.slope() === other.slope()) return false;
 
-        var intercept = {};
-        intercept.x = (other.yInt() - this.yInt()) / (this.slope() - other.slope());
-        intercept.y = this.slope() * intercept.x + this.yInt();
+        var intersect = {};
+        intersect.x = (other.yInt() - this.yInt()) / (this.slope() - other.slope());
+        intersect.y = this.slope() * intersect.x + this.yInt();
 
-        return intercept;
+        return intersect;
     };
 
     circleCollide(circle) {
@@ -52,10 +52,10 @@ class Line {
 
         var d = b * b - 4 * a * c;
 
-        if (d > 0) {
-            return [(-b + Math.sqrt(d)) / (2 * a), (-b - Math.sqrt(d)) / (2 * a)];
-        } else if (d === 0) {
+        if (d === 0) {
             return [(-b + Math.sqrt(d)) / (2 * a)];
+        } else if (d > 0) {
+            return [(-b + Math.sqrt(d)) / (2 * a), (-b - Math.sqrt(d)) / (2 * a)];
         } 
 
         return [];
